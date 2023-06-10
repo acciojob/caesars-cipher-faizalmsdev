@@ -29,17 +29,20 @@ const lookup = {
   ",": ",",
 };
 
-function rot13(encodedStr) {
-  let decodedArr = [];
+function rot13(encodedString) {
+  let decodedString = "";
 
-  for (let i = 0; i < encodedStr.length; i++) {
-    const char = encodedStr[i];
-    const decodedChar = lookup[char] || char; // Lookup decoded character
+  for (let i = 0; i < encodedString.length; i++) {
+    const character = encodedString[i];
+    const decodedCharacter = lookup[character];
 
-    decodedArr.push(decodedChar);
+    if (decodedCharacter) {
+      decodedString += decodedCharacter;
+    } else {
+      decodedString += character;
+    }
   }
 
-  return decodedArr.join("");
+  return decodedString;
 }
 
-console.log(rot13("SERR YBIR? NPPVBWBO")); // Output: "FREE LOVE? ACCCCCCOB"
